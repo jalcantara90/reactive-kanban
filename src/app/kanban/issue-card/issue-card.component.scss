@@ -1,0 +1,11 @@
+article {
+  button {
+    opacity: 0;
+    top: .2em;
+    right: .2em;
+  }
+
+  &:hover button {
+    opacity: 1;
+  }
+}

@@ -1,0 +1,34 @@
+.open {
+  width: 260px;
+
+  .label {
+    transition-property: display;
+    animation-duration: .7s;
+    animation-name: appearText;
+  }
+}
+
+.closed {
+  width: 60px;
+  transition-property: width;
+  .label {
+    display: none;
+    transition-property: display;
+  }
+}
+
+@keyframes appearText {
+  0% {
+    display: none;
+    opacity: 0;
+  }
+
+  68% {
+    display: initial;
+    opacity: .5;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}

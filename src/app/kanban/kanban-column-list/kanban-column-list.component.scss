@@ -1,0 +1,45 @@
+.horizontal-table {
+  display: table;
+  table-layout: fixed;
+  height: 100%;
+  width: 100%;
+}
+
+.full {
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.table-row {
+  display: table-row;
+}
+
+
+.table {
+  display: inline-table;
+}
+
+.thead {
+  display: table-header-group;
+}
+
+.tbody {
+  display: table-row-group;
+}
+
+.tcol {
+  display: table-column;
+}
+
+
+.container {
+
+    /* max-width: 90%; */
+    /* width: calc(100% - 260px); */
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(229px, 1fr));
+    grid-auto-flow: row dense;
+    grid-gap: .75rem;
+
+}

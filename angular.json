@@ -15,8 +15,11 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-builders/custom-webpack:browser",
           "options": {
+            "customWebpackConfig": {
+              "path": "./config/webpack.config.js"
+            },
             "outputPath": "dist/reactive-kanban",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -40,6 +43,9 @@
                   "with": "src/environments/environment.prod.ts"
                 }
               ],
+              "customWebpackConfig": {
+                "path": "./config/webpack.config.prod.js"
+              },
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
@@ -64,7 +70,7 @@
           }
         },
         "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
+          "builder": "@angular-builders/custom-webpack:dev-server",
           "options": {
             "browserTarget": "reactive-kanban:build"
           },
@@ -123,6 +129,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "reactive-kanban"
+    }
+  },
+  "defaultProject": "reactive-kanban",
+  "cli": {
+    "analytics": "65cb354e-ed4b-4872-af29-27ccf4ff57ba"
+  }
 }
