@@ -1,12 +1,7 @@
-
-<div class="flex flex-wrap h-screen">
-  <app-header class="w-full h-auto"></app-header>
-  <div class=" flex flex-no-wrap content">
-    <app-sidebar></app-sidebar>
-    <section class="flex-auto bg-gray-300 py-5 px-5">
-      <div>
-        <router-outlet></router-outlet>
-      </div>
-    </section>
-  </div>
+<!-- <app-header></app-header> -->
+<div class="content w-full flex fixed left-0">
+  <app-sidebar></app-sidebar>
+  <app-content>
+    <router-outlet></router-outlet>
+  </app-content>
 </div>

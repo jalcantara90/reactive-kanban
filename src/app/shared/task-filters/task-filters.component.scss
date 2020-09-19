@@ -1,0 +1,41 @@
+.search-box {
+  width: 40%;
+}
+
+.ng-select {
+
+  &.custom {
+    ::ng-deep {
+      .ng-select-container {
+        @apply bg-gray-300;
+        @apply border-0;
+        border-radius: 0px;
+
+        .ng-value {
+          border-radius: 15px;
+          @apply bg-pink-500;
+          @apply text-white;
+          @apply duration-700;
+
+          &:hover {
+            @apply bg-pink-600;
+          }
+
+          .ng-value-icon.left {
+            @apply border-0;
+            @apply duration-700;
+            border-top-left-radius: 15px;
+            border-bottom-left-radius: 15px;
+
+            &:hover {
+              @apply bg-pink-600;
+            }
+          }
+        }
+
+      }
+
+    }
+  }
+}
+

@@ -1,0 +1,29 @@
+.container {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  @apply rounded;
+  @apply block;
+  @apply relative;
+  @apply cursor-pointer;
+  @apply transition-colors;
+  @apply duration-500;
+
+  &.disabled {
+    @apply bg-gray-400;
+    @apply text-gray-500;
+  }
+
+  input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+}
+
+:host ::ng-deep input:checked + span svg {
+  @apply fill-current;
+}

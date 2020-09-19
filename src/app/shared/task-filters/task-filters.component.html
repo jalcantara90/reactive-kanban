@@ -1,0 +1,29 @@
+<form [formGroup]="filtersForm" class="bg-gray-300 flex flex-wrap gap-1 items-center mb-4 p-2 rounded">
+  <div class="inline-block relative search-box">
+    <input formControlName="search" class="block bg-gray-300 appearance-none w-full py-2 px-3 pl-8 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" placeholder="Search by username, issue title or number">
+    <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center px-2 text-gray-700">
+      <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+      </svg>
+    </div>
+  </div>
+
+  <ng-select
+    class="custom"
+    [items]="statesList"
+    bindLabel="label"
+    placeholder="States"
+    multiple="true"
+    formControlName="states">
+  </ng-select>
+
+  <ng-select
+    class="custom"
+    [items]="userList"
+    bindLabel="name"
+    placeholder="Assigned To"
+    multiple="true"
+    formControlName="users">
+  </ng-select>
+
+</form>

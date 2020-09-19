@@ -1,0 +1,15 @@
+article {
+  .project-summary {
+    right: 1rem;
+    bottom: .5rem;
+  }
+
+  button {
+    opacity: 0;
+    @apply duration-300;
+  }
+
+  &:hover button {
+    opacity: 1;
+  }
+}

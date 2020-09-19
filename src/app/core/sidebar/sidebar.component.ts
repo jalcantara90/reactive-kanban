@@ -1,18 +1,17 @@
-import { Component, OnInit, HostBinding } from '@angular/core';
+import { Component } from '@angular/core';
 import { SidebarService } from '../sidebar.service';
-import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.scss']
 })
-export class SidebarComponent implements OnInit {
+export class SidebarComponent {
   isOpen$ = this.sidebarService.isOpen$;
 
   constructor(private sidebarService: SidebarService) { }
 
-  ngOnInit(): void {
+  public burgerClick(): void {
+    this.sidebarService.toogleSidebar();
   }
-
 }

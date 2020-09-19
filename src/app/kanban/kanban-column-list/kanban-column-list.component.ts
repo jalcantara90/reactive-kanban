@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../../shared/user.model';
 import { Task } from '../../shared/task.model';
-import { TaskState } from '../../shared/task-state.enum';
 import { TaskStateToDo, TaskStateInProgress, TaskStateToReview, TaskStateClosed, TaskStateCompleted, TaskStateBlocked } from '../../shared/task-states.model';
 
 interface IKanbanColumn {
@@ -66,25 +65,7 @@ const columnsData: IKanbanColumn[] = [
     taskList: [
       new Task({ title: 'Create App', assigned: user1, state: new TaskStateClosed()}),
     ]
-  },
-  {
-    name: 'Closed',
-    taskList: [
-      new Task({ title: 'Create App', assigned: user1, state: new TaskStateClosed()}),
-    ]
-  },
-  {
-    name: 'Closed',
-    taskList: [
-      new Task({ title: 'Create App', assigned: user1, state: new TaskStateClosed()}),
-    ]
-  },
-  {
-    name: 'Closed',
-    taskList: [
-      new Task({ title: 'Create App', assigned: user1, state: new TaskStateClosed()}),
-    ]
-  },
+  }
 ];
 
 @Component({

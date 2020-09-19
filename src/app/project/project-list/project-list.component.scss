@@ -1,0 +1,9 @@
+.project-grid {
+  @apply grid;
+  @apply gap-2;
+  @apply overflow-auto;
+
+  max-height: 80vh;
+  grid-auto-flow: row;
+  grid-template-columns: repeat(3, 1fr)
+}

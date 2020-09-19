@@ -1,0 +1,47 @@
+.backlog-list-container {
+  max-height: 70%;
+
+  svg {
+    @apply text-transparent;
+  }
+
+  button {
+    @apply duration-200;
+
+    &:hover {
+      transform: scale(1.5);
+    }
+  }
+
+  thead {
+    tr {
+      @apply bg-red-400;
+    }
+  }
+
+  th {
+    @apply text-left;
+    @apply sticky;
+    @apply top-0;
+    @apply bg-white;
+    @apply rounded;
+  }
+
+  tr:hover {
+    svg {
+      @apply text-purple-500;
+    }
+  }
+
+  tbody {
+
+    tr:hover {
+      @apply bg-pink-100;
+      @apply duration-300;
+    }
+
+    td {
+      @apply py-2;
+    }
+  }
+}

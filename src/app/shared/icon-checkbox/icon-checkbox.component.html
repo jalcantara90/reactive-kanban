@@ -1,0 +1,10 @@
+<label class="container p-2" [ngClass]="{ disabled: isDisabled }">
+  <input
+    type="checkbox"
+    [checked]="isChecked"
+    [disabled]="isDisabled"
+    (change)="toogleCheckbox($event.target.checked)">
+  <span>
+    <ng-content></ng-content>
+  </span>
+</label>

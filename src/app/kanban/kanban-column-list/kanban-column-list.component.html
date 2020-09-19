@@ -1,8 +1,8 @@
 
-<div class="flex gap-2 overflow-auto">
-  <section *ngFor="let column of columns">
-    <div style="position: sticky; top: 0; z-index: 1;" class="border-b-2 mb-2 border-black text-gray-700">{{ column.name }}</div>
-    <div class="py-3 px-3 rounded flex flex-col gap-2 h-full bg-gray-100">
+<div class="gap-2 overflow-auto kanban-container">
+  <section class="h-full w-64" *ngFor="let column of columns">
+    <div class="border-b-2 border-black bg-white mb-2 sticky text-gray-700 top-0 z-10">{{ column.name }}</div>
+    <div class="py-3 px-3 rounded flex flex-col gap-2 h-full bg-gray-100 ">
       <app-issue-card [task]="task" *ngFor="let task of column.taskList"></app-issue-card>
     </div>
   </section>
