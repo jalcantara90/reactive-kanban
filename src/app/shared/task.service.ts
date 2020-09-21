@@ -6,7 +6,7 @@ import { BehaviorSubject } from 'rxjs';
 
 export const user1 = new User({
   name: 'Jonathan Alcántara',
-  image: 'https://pbs.twimg.com/profile_images/872745468115156992/JGulyXUY_400x400.jpg'
+  image: 'https://pbs.twimg.com/profile_images/1305523485750579200/iTA80rdo_400x400.jpg'
 });
 export const user2 = new User({
   name: 'Reactive Extensions JS',

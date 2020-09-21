@@ -7,6 +7,8 @@ import { TaskStateModule } from '../shared/task-state/task-state.module';
 import { ProjectSelectorModule } from '../shared/project-selector/project-selector.module';
 import { TaskFiltersModule } from '../shared/task-filters/task-filters.module';
 import { PaginatorModule } from '../shared/paginator/paginator.module';
+import { IconCheckboxModule } from '../shared/icon-checkbox/icon-checkbox.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [BacklogShellComponent, BacklogListComponent],
@@ -16,7 +18,9 @@ import { PaginatorModule } from '../shared/paginator/paginator.module';
     TaskStateModule,
     ProjectSelectorModule,
     TaskFiltersModule,
-    PaginatorModule
+    PaginatorModule,
+    IconCheckboxModule,
+    ReactiveFormsModule
   ]
 })
 export class BacklogModule { }

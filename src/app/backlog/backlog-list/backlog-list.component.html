@@ -9,7 +9,7 @@
         <th></th>
       </tr>
     </thead>
-    <tbody>
+    <tbody @fadeInGrow>
       <tr class="cursor-pointer" *ngFor="let task of taskList$ | async">
         <td class="flex items-center gap-1">
           <button class="p-2">

@@ -1,24 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { User } from '../../shared/user.model';
 import { Task } from '../../shared/task.model';
 import { TaskStateToDo, TaskStateInProgress, TaskStateToReview, TaskStateClosed, TaskStateCompleted, TaskStateBlocked } from '../../shared/task-states.model';
+import { user1, user2, user3 } from 'src/app/shared/task.service';
+
+import { fallOutAnimation } from '../../shared/animations/fall-out.animation';
 
 interface IKanbanColumn {
   name: string;
   taskList: Task[];
 }
-const user1 = new User({
-  name: 'Jonathan Alcántara',
-  image: 'https://pbs.twimg.com/profile_images/872745468115156992/JGulyXUY_400x400.jpg'
-});
-const user2 = new User({
-  name: 'Reactive Extensions JS',
-  image: 'https://rxjs-dev.firebaseapp.com/assets/images/logos/Rx_Logo_S.png'
-});
-const user3 = new User({
-  name: 'Angular',
-  image: 'https://angular.io/assets/images/logos/angular/angular.svg'
-});
 
 const columnsData: IKanbanColumn[] = [
   {
@@ -71,10 +62,12 @@ const columnsData: IKanbanColumn[] = [
 @Component({
   selector: 'app-kanban-column-list',
   templateUrl: './kanban-column-list.component.html',
-  styleUrls: ['./kanban-column-list.component.scss']
+  styleUrls: ['./kanban-column-list.component.scss'],
+  animations: [fallOutAnimation]
 })
 export class KanbanColumnListComponent implements OnInit {
   public columns = columnsData;
+  @Input() isFiltersShown: boolean;
 
   constructor() { }
 

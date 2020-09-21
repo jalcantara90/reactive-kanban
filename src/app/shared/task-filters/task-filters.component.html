@@ -1,4 +1,6 @@
-<form [formGroup]="filtersForm" class="bg-gray-300 flex flex-wrap gap-1 items-center mb-4 p-2 rounded">
+<form
+  [formGroup]="filtersForm"
+  class="bg-gray-300 flex flex-wrap gap-1 items-center mb-4 p-2 rounded">
   <div class="inline-block relative search-box">
     <input formControlName="search" class="block bg-gray-300 appearance-none w-full py-2 px-3 pl-8 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" placeholder="Search by username, issue title or number">
     <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center px-2 text-gray-700">
@@ -23,7 +25,7 @@
     bindLabel="name"
     placeholder="Assigned To"
     multiple="true"
-    formControlName="users">
+    formControlName="assigned">
   </ng-select>
 
 </form>
