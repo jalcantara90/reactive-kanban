@@ -7,6 +7,14 @@
 
   li a {
     height: 48px;
+
+    &.active {
+      @apply bg-gray-900;
+
+      svg {
+        @apply text-teal-600;
+      }
+    }
   }
 
   .project-name {
@@ -22,3 +30,5 @@
 .user-info {
   width: 141px;
 }
+
+
