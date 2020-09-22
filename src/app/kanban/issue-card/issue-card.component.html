@@ -11,9 +11,41 @@
     <span class="text-gray-600 mr-2">State:</span>
     <app-task-state [task]="task"></app-task-state>
   </div>
-  <button class="absolute px-2 py-2 duration-500 rounded">
+  <button class="absolute px-2 py-2 duration-500 rounded" [contextualMenu]="issueActions" horizontalPosition="left">
     <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
     </svg>
   </button>
 </article>
+
+<ng-template #issueActions>
+  <app-contextual-menu>
+    <ul>
+      <li class="hover:bg-gray-100 p-2 cursor-pointer rounded duration-300">Edit Issue</li>
+      <li class="hover:bg-gray-100 p-2 cursor-pointer rounded duration-300">Remove Issue</li>
+
+      <li>
+        <div class="p-2">
+          <ng-select
+            class="w-56"
+            [items]="userList"
+            placeholder="Change assigned"
+            [formControl]="control">
+              <ng-template ng-label-tmp let-item="item">
+                <div class="flex items-center gap-2">
+                  <img class="w-4 h-4 rounded-full" [src]="item.image"/>
+                  <span>{{item.name}}</span>
+                </div>
+              </ng-template>
+              <ng-template ng-option-tmp let-item="item">
+                <div class="flex items-center gap-2">
+                  <img class="w-4 h-4 rounded-full" [src]="item.image"/>
+                  <span>{{item.name}}</span>
+                </div>
+              </ng-template>
+          </ng-select>
+        </div>
+      </li>
+    </ul>
+  </app-contextual-menu>
+</ng-template>

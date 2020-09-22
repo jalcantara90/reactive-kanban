@@ -7,9 +7,14 @@
 
   li a {
     height: 48px;
+    @apply border-teal-600;
 
     &.active {
       @apply bg-gray-900;
+      @apply px-4;
+      @apply border-l-4;
+      @apply border-teal-600;
+      @apply duration-150;
 
       svg {
         @apply text-teal-600;

@@ -5,12 +5,14 @@ import { HeaderComponent } from './header/header.component';
 import { RouterModule } from '@angular/router';
 import { ContentComponent } from './content/content.component';
 import { SidebarService } from './sidebar.service';
+import { ContextualMenuModule } from '../shared/contextual-menu/contextual-menu.module';
 
 @NgModule({
   declarations: [SidebarComponent, HeaderComponent, ContentComponent],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    ContextualMenuModule
   ],
   providers: [SidebarService],
   exports: [SidebarComponent, HeaderComponent, ContentComponent]

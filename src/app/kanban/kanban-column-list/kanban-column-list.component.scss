@@ -2,6 +2,7 @@
 .kanban-container {
   display: grid;
   grid-auto-flow: column;
+  grid-auto-columns: minmax(16rem, 1fr);
   overflow: auto;
   height: 91vh;
   transition-property: height;

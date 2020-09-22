@@ -5,6 +5,7 @@
 
 @import 'tailwindcss/utilities';
 @import "@ng-select/ng-select/themes/default.theme.css";
+@import '@angular/cdk/overlay-prebuilt.css';
 
 .container-view {
   height: calc(100vh - 46px);

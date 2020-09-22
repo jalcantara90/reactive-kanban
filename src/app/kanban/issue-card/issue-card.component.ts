@@ -1,6 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Task } from '../../shared/task.model';
 import { TaskState } from '../../shared/task-state.enum';
+import { User } from 'src/app/shared/user.model';
+import { user1, user2, user3 } from 'src/app/shared/task.service';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-issue-card',
@@ -9,8 +12,13 @@ import { TaskState } from '../../shared/task-state.enum';
 })
 export class IssueCardComponent implements OnInit {
   @Input() public task: Task;
-  // public taskState = TaskState;
+  public userList: User[] = [
+    user1,
+    user2,
+    user3
+  ];
 
+  public control: FormControl;
   public taskStateCSSClass: {[key: string]: boolean};
 
   constructor() { }
@@ -24,6 +32,8 @@ export class IssueCardComponent implements OnInit {
       'bg-indigo-500': this.task.state.type === TaskState.COMPLETE,
       'bg-pink-500': this.task.state.type === TaskState.CLOSED,
     };
+
+    this.control = new FormControl(this.task.assigned);
   }
 
 }

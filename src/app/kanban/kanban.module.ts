@@ -10,6 +10,8 @@ import { ProjectSelectorModule } from '../shared/project-selector/project-select
 import { TaskFiltersModule } from '../shared/task-filters/task-filters.module';
 import { IconCheckboxModule } from '../shared/icon-checkbox/icon-checkbox.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ContextualMenuModule } from '../shared/contextual-menu/contextual-menu.module';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 @NgModule({
   declarations: [KanbanShellComponent, KanbanColumnListComponent, IssueCardComponent],
@@ -20,7 +22,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     ProjectSelectorModule,
     TaskFiltersModule,
     IconCheckboxModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ContextualMenuModule,
+    NgSelectModule
   ],
   exports: [KanbanShellComponent]
 })
