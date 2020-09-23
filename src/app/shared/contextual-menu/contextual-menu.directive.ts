@@ -41,9 +41,9 @@ export class ContextualMenuDirective implements AfterViewInit, OnDestroy {
     }
 
     const positionStrategy = this.getPosition(this.elementRef);
-    this.overlayRef = this.createOverlayRef(positionStrategy);
+    this.overlayRef = this.createOverlayRef(positionStrategy, this.overlay);
 
-    this.overlayRef.attach(new TemplatePortal(this.contextualMenu, this.viewContainerRef));
+    this.overlayRef.attach(this.createPortal(this.contextualMenu, this.viewContainerRef));
 
     this.eventSubscription.add(
       this.overlayRef.backdropClick().subscribe(() => this.overlayRef.detach())
@@ -82,12 +82,17 @@ export class ContextualMenuDirective implements AfterViewInit, OnDestroy {
     }
   }
 
-  private createOverlayRef(positionStrategy: FlexibleConnectedPositionStrategy): OverlayRef {
-    return this.overlay.create({
+  private createOverlayRef(positionStrategy: FlexibleConnectedPositionStrategy, overlay: Overlay): OverlayRef {
+    return overlay.create({
       positionStrategy,
-      scrollStrategy: this.overlay.scrollStrategies.close(),
+      scrollStrategy: overlay.scrollStrategies.close(),
       hasBackdrop: true,
       backdropClass: 'no-overlay'
     });
+  }
+
+
+  private createPortal(contextualMenu: TemplateRef<any>, containerRef: ViewContainerRef): TemplatePortal {
+    return new TemplatePortal(contextualMenu, containerRef);
   }
 }
