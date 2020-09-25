@@ -25,7 +25,7 @@ export class ProjectShellComponent implements OnInit {
     this.projectService.getProjectList();
   }
 
-  async openModal(project?: Project): void {
+  async openModal(project?: Project): Promise<void> {
     const { ProjectModalComponent } = await import('../project-modal/project-modal.component');
 
     const modalRef = this.modalService.present(ProjectModalComponent, { data: project, width: '40vw' });
