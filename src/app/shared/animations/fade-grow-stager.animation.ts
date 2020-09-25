@@ -25,3 +25,11 @@ export const fadeGrowStagger: AnimationTriggerMetadata =
       ]),
     ]),
   ]);
+
+  export const fadeGrow: AnimationTriggerMetadata =
+  trigger('fadeGrow', [
+    transition(':enter', [
+      style(ExitStyle),
+      animate('200ms', style(EnterStyle)),
+    ])
+  ]);

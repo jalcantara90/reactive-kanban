@@ -1,0 +1,10 @@
+.project-grid {
+  @apply grid;
+  @apply gap-2;
+  @apply overflow-auto;
+  @apply p-2;
+
+  max-height: 80vh;
+  grid-auto-flow: row;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+}

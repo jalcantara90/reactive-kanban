@@ -33,6 +33,9 @@ export class ContextualMenuDirective implements AfterViewInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.eventSubscription.unsubscribe();
+    if (this.overlayRef) {
+      this.overlayRef.detach();
+    }
   }
 
   private openContextualMenu(): void {
@@ -52,8 +55,8 @@ export class ContextualMenuDirective implements AfterViewInit, OnDestroy {
 
   private getPosition(el: ElementRef<any>): FlexibleConnectedPositionStrategy {
     const boundingClientRects = el.nativeElement.getBoundingClientRect();
-    let x = boundingClientRects[this.horizontalPosition];
     const y = boundingClientRects[this.verticalPosition];
+    let x = boundingClientRects[this.horizontalPosition];
 
     if (this.outElement) {
       x = x + (boundingClientRects.right - boundingClientRects.left) + OFFSET;

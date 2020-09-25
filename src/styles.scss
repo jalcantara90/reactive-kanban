@@ -10,3 +10,9 @@
 .container-view {
   height: calc(100vh - 46px);
 }
+
+.cdk-overlay-container,
+.cdk-global-overlay-wrapper {
+  justify-content: center;
+  align-items: center;
+}

@@ -5,10 +5,10 @@ export class User extends Entity implements IUser {
   public name: string;
   public image: string;
 
-  constructor(user: IUser) {
+  constructor(user?: IUser) {
     super();
 
-    this.name = user.name;
-    this.image = user.image;
+    this.name = user?.name || '';
+    this.image = user?.image || '';
   }
 }

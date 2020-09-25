@@ -26,6 +26,18 @@
     placeholder="Assigned To"
     multiple="true"
     formControlName="assigned">
+    <ng-template ng-label-tmp let-item="item">
+      <div class="flex items-center gap-2 bg-white text-black px-2 rounded-full">
+        <img class="w-4 h-4 rounded-full" [src]="item.image"/>
+        <span>{{item.name}}</span>
+      </div>
+    </ng-template>
+    <ng-template ng-option-tmp let-item="item">
+      <div class="flex items-center gap-2">
+        <img class="w-4 h-4 rounded-full" [src]="item.image"/>
+        <span>{{item.name}}</span>
+      </div>
+    </ng-template>
   </ng-select>
 
 </form>
