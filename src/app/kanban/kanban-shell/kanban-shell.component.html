@@ -17,7 +17,7 @@
 <div *ngIf="showFilters$ | async" @inOutAnimation>
   <app-task-filters (filtersChanges)="filtersChanges($event)"></app-task-filters>
 </div>
-<app-kanban-column-list [isFiltersShown]="showFilters$ | async"></app-kanban-column-list>
+<app-kanban-column-list [taskList]="taskList$ | async" [isFiltersShown]="showFilters$ | async"></app-kanban-column-list>
 
 <ng-template #settings>
   <app-contextual-menu>

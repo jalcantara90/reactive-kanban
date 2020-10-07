@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Task } from '../task.model';
-import { TaskState } from '../task-state.enum';
+import { Task } from '../task/task.model';
+import { TaskState } from '../task/task-state.enum';
 
 @Component({
   selector: 'app-task-state',

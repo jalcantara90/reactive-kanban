@@ -1,4 +1,4 @@
-import { User } from '../shared/user.model';
+import { User } from '../shared/user/user.model';
 
 export class UserBuilder {
   private user: User;

@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { fadeGrow } from 'src/app/shared/animations/fade-grow-stager.animation';
-import { Project } from 'src/app/shared/project.model';
+import { fadeGrow } from '../../shared/animations/fade-grow-stager.animation';
+import { Project } from '../../shared/project.model';
 
 @Component({
   selector: 'app-project-card',

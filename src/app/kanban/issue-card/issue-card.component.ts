@@ -1,9 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Task } from '../../shared/task.model';
-import { TaskState } from '../../shared/task-state.enum';
-import { User } from 'src/app/shared/user.model';
-import { user1, user2, user3 } from 'src/app/shared/task.service';
+import { Task } from '../../shared/task/task.model';
+import { TaskState } from '../../shared/task/task-state.enum';
+import { User } from 'src/app/shared/user/user.model';
 import { FormControl } from '@angular/forms';
+import { userList } from 'src/app/data/data-mock';
 
 @Component({
   selector: 'app-issue-card',
@@ -12,12 +12,7 @@ import { FormControl } from '@angular/forms';
 })
 export class IssueCardComponent implements OnInit {
   @Input() public task: Task;
-  public userList: User[] = [
-    user1,
-    user2,
-    user3
-  ];
-
+  public userList: User[] = userList;
   public control: FormControl;
   public taskStateCSSClass: {[key: string]: boolean};
 

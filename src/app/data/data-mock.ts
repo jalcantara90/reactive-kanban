@@ -1,5 +1,5 @@
-import { TaskStateToDo, TaskStateBlocked, TaskStateInProgress, TaskStateToReview, TaskStateCompleted } from '../shared/task-states.model';
-import { Task } from '../shared/task.model';
+import { TaskStateToDo, TaskStateBlocked, TaskStateInProgress, TaskStateToReview, TaskStateCompleted } from '../shared/task/task-states.model';
+import { Task } from '../shared/task/task.model';
 import { ProjectBuilder } from './project.builder';
 import { UserBuilder } from './user.builder';
 
@@ -18,7 +18,7 @@ export const user3 = new UserBuilder()
 
 export const userList = [user1, user2, user3];
 
-const taskList: Task[] = [
+export const taskList: Task[] = [
   new Task({ title: 'Can coffee make you a better developer?', state: new TaskStateToDo() }),
   new Task({ title: 'Create example of drag and drop', assigned: user1, state: new TaskStateToDo() }),
   new Task({ title: 'Create a portal example', state: new TaskStateToDo() }),

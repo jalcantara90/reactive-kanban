@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
+import { TaskService } from '../../shared/task/task.service';
 import { inOutAnimation } from '../../shared/animations/in-out.animation';
 
 @Component({
@@ -12,14 +13,15 @@ import { inOutAnimation } from '../../shared/animations/in-out.animation';
 export class KanbanShellComponent implements OnInit {
   public control = new FormControl({ value: false, disabled: false });
   public showFilters$: Observable<boolean> = this.control.valueChanges;
+  public taskList$ = this.taskService.taskList$;
 
-  constructor() { }
+  constructor(private taskService: TaskService) { }
 
   ngOnInit(): void {
     this.control.valueChanges.subscribe(value => console.log('Custom Form value -->', value));
   }
 
   filtersChanges(data): void {
-    console.log(data);
+    this.taskService.filter(data);
   }
 }

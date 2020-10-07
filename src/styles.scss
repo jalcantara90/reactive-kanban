@@ -16,3 +16,8 @@
   justify-content: center;
   align-items: center;
 }
+
+.cdk-drop-list-dragging .cdk-drag {
+  @apply duration-300;
+  @apply transition-transform;
+}

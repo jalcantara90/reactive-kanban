@@ -1,8 +1,9 @@
 import { Component, Output, OnInit, OnDestroy } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { TaskStateToDo, TaskStateBlocked, TaskStateInProgress, TaskStateToReview, TaskStateCompleted, TaskStateClosed } from '../task-states.model';
-import { user1, user2, user3 } from '../task.service';
+import { TaskStateToDo, TaskStateBlocked, TaskStateInProgress, TaskStateToReview, TaskStateCompleted, TaskStateClosed } from '../task/task-states.model';
+
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { userList } from 'src/app/data/data-mock';
 
 @Component({
   selector: 'app-task-filters',
@@ -12,9 +13,9 @@ import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 })
 export class TaskFiltersComponent {
   filtersForm = new FormGroup({
-    search: new FormControl(),
-    states: new FormControl(),
-    assigned: new FormControl()
+    search: new FormControl(''),
+    states: new FormControl([]),
+    assigned: new FormControl([])
   });
 
   @Output() filtersChanges = this.filtersForm.valueChanges.pipe(
@@ -31,11 +32,7 @@ export class TaskFiltersComponent {
     new TaskStateClosed()
   ];
 
-  userList = [
-    user1,
-    user2,
-    user3
-  ];
+  userList = userList;
 
   constructor() { }
 }

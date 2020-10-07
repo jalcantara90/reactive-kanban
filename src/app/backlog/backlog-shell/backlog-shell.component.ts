@@ -1,7 +1,9 @@
+import { CdkDragDrop } from '@angular/cdk/drag-drop';
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { inOutAnimation } from 'src/app/shared/animations/in-out.animation';
+import { inOutAnimation } from '../../shared/animations/in-out.animation';
+import { ITaskFilters, TaskService } from '../../shared/task/task.service';
 
 @Component({
   selector: 'app-backlog-shell',
@@ -10,14 +12,20 @@ import { inOutAnimation } from 'src/app/shared/animations/in-out.animation';
   animations: [inOutAnimation]
 })
 export class BacklogShellComponent implements OnInit {
-  public control = new FormControl({ value: false, disabled: false });
+  public control = new FormControl(false);
   public showFilters$: Observable<boolean> = this.control.valueChanges;
-  constructor() { }
+  public taskList$ = this.taskService.taskList$;
+
+  constructor(private taskService: TaskService) { }
 
   ngOnInit(): void {
   }
 
-  filtersChanges(filters): void {
+  filtersChanges(filters: ITaskFilters): void {
+    this.taskService.filter(filters);
+  }
 
+  issueDropped(event: CdkDragDrop<string[]>): void {
+    this.taskService.changeOrder(event);
   }
 }

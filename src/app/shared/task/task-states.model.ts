@@ -64,3 +64,22 @@ export class TaskStateClosed implements ITaskState {
     this.type = TaskState.CLOSED;
   }
 }
+
+export function taskFactory(taskState: TaskState): ITaskState {
+  switch(taskState) {
+    case TaskState.TODO:
+      return new TaskStateToDo();
+    case TaskState.INPROGRESS:
+      return new TaskStateInProgress();
+    case TaskState.COMPLETE:
+      return new TaskStateCompleted();
+    case TaskState.TOREVIEW:
+      return new TaskStateToReview();
+    case TaskState.CLOSED:
+      return new TaskStateClosed();
+    case TaskState.BLOCKED:
+      return new TaskStateBlocked();
+    default:
+      return new TaskStateToDo();
+  }
+}

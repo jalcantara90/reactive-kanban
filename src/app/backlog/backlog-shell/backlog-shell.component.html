@@ -17,6 +17,6 @@
   <div *ngIf="showFilters$ | async" @inOutAnimation>
     <app-task-filters (filtersChanges)="filtersChanges($event)"></app-task-filters>
   </div>
-  <app-backlog-list></app-backlog-list>
+  <app-backlog-list [taskList]="taskList$ | async" (issueDroped)="issueDropped($event)"></app-backlog-list>
   <app-paginator></app-paginator>
 </section>

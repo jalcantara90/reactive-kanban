@@ -7,13 +7,18 @@
       Create project
     </button>
   </div>
-  <div class="project-grid" @fadeGrowStagger>
-    <app-project-card
-      [project]="project"
-      (editProject)="openModal($event)"
-      (deleteProject)="deleteProject($event)"
-      *ngFor="let project of projectList$ | async">
-    </app-project-card>
-  </div>
-
+  <ng-container *ngIf="projectList$ | async as projectList; else loading">
+    <div class="project-grid" @fadeGrowStagger>
+      <app-project-card
+        [project]="project"
+        (editProject)="openModal($event)"
+        (deleteProject)="deleteProject($event)"
+        *ngFor="let project of projectList">
+      </app-project-card>
+    </div>
+  </ng-container>
 </div>
+
+<ng-template #loading>
+  <h1>Loading...</h1>
+</ng-template>

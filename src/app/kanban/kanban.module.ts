@@ -12,6 +12,7 @@ import { IconCheckboxModule } from '../shared/icon-checkbox/icon-checkbox.module
 import { ReactiveFormsModule } from '@angular/forms';
 import { ContextualMenuModule } from '../shared/contextual-menu/contextual-menu.module';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 @NgModule({
   declarations: [KanbanShellComponent, KanbanColumnListComponent, IssueCardComponent],
@@ -24,7 +25,8 @@ import { NgSelectModule } from '@ng-select/ng-select';
     IconCheckboxModule,
     ReactiveFormsModule,
     ContextualMenuModule,
-    NgSelectModule
+    NgSelectModule,
+    DragDropModule
   ],
   exports: [KanbanShellComponent]
 })

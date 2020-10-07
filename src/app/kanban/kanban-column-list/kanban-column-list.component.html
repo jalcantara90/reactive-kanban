@@ -1,9 +1,18 @@
 
 <div class="gap-2 overflow-auto kanban-container" [ngClass]="{ 'filters-shown': isFiltersShown }">
-  <section class="h-full  w-full" *ngFor="let column of columns">
+  <section class="h-full  w-full" *ngFor="let column of columns; let i = index">
     <div class="border-b-2 border-black bg-white mb-2 sticky text-gray-700 top-0 z-10">{{ column.name }}</div>
-    <div @fallOutAnimation class="py-3 px-3 rounded flex flex-col gap-2 h-full bg-gray-100">
-      <app-issue-card [task]="task" *ngFor="let task of column.taskList"></app-issue-card>
+    <div
+      [id]="column.name"
+      cdkDropList
+      @fallOutAnimation
+      [cdkDropListData]="columns[i].taskList"
+      [cdkDropListConnectedTo]="connectedTo"
+      (cdkDropListDropped)="drop($event)"
+      class="py-3 px-3 rounded flex flex-col gap-2 h-full bg-gray-100">
+      <app-issue-card [task]="task" *ngFor="let task of column.taskList" cdkDrag>
+        <div class="bg-gray-300 w-full h-24 rounded" *cdkDragPlaceholder></div>
+      </app-issue-card>
     </div>
   </section>
 </div>

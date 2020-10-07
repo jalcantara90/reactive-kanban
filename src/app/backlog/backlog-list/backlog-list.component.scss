@@ -45,3 +45,18 @@
     }
   }
 }
+
+.cdk-drag-preview {
+  @apply flex;
+  @apply justify-start;
+  @apply shadow;
+  @apply gap-4;
+  @apply py-2;
+  @apply rounded;
+  @apply bg-gray-100;
+  @apply items-center;
+
+  svg {
+    @apply text-purple-500;
+  }
+}

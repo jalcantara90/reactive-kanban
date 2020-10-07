@@ -9,6 +9,7 @@ import { TaskFiltersModule } from '../shared/task-filters/task-filters.module';
 import { PaginatorModule } from '../shared/paginator/paginator.module';
 import { IconCheckboxModule } from '../shared/icon-checkbox/icon-checkbox.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 @NgModule({
   declarations: [BacklogShellComponent, BacklogListComponent],
@@ -20,7 +21,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     TaskFiltersModule,
     PaginatorModule,
     IconCheckboxModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    DragDropModule
   ]
 })
 export class BacklogModule { }

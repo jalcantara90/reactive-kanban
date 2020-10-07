@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { TaskService } from '../../shared/task.service';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { fadeInGrow } from '../../shared/animations/fadein-grow.animation';
+import { CdkDragDrop} from '@angular/cdk/drag-drop';
+import { Task } from '../../shared/task/task.model';
 
 @Component({
   selector: 'app-backlog-list',
@@ -8,12 +9,12 @@ import { fadeInGrow } from '../../shared/animations/fadein-grow.animation';
   styleUrls: ['./backlog-list.component.scss'],
   animations: [fadeInGrow]
 })
-export class BacklogListComponent implements OnInit {
-  taskList$ = this.taskService.taskList$;
+export class BacklogListComponent {
+  @Input() taskList: Task[];
+  @Output() issueDroped = new EventEmitter<CdkDragDrop<string[]>>();
+  constructor() { }
 
-  constructor(private taskService: TaskService) { }
-
-  ngOnInit(): void {
+  drop(event: CdkDragDrop<string[]>) {
+    this.issueDroped.emit(event);
   }
-
 }

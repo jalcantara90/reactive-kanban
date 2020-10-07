@@ -1,3 +1,4 @@
+<ng-content></ng-content>
 <article class="bg-white border-2 border-gray-200 border-solid duration-700 hover:shadow p-3 rounded text-xs relative">
   <div class="flex text-gray-700 mb-2">
     <span class="text-black mr-2">{{ task.id }}</span>
@@ -31,18 +32,18 @@
             [items]="userList"
             placeholder="Change assigned"
             [formControl]="control">
-              <ng-template ng-label-tmp let-item="item">
-                <div class="flex items-center gap-2">
-                  <img class="w-4 h-4 rounded-full" [src]="item.image"/>
-                  <span>{{item.name}}</span>
-                </div>
-              </ng-template>
-              <ng-template ng-option-tmp let-item="item">
-                <div class="flex items-center gap-2">
-                  <img class="w-4 h-4 rounded-full" [src]="item.image"/>
-                  <span>{{item.name}}</span>
-                </div>
-              </ng-template>
+            <ng-template ng-label-tmp let-item="item">
+              <div class="flex items-center gap-2">
+                <img class="w-4 h-4 rounded-full" [src]="item.image"/>
+                <span>{{item.name}}</span>
+              </div>
+            </ng-template>
+            <ng-template ng-option-tmp let-item="item">
+              <div class="flex items-center gap-2">
+                <img class="w-4 h-4 rounded-full" [src]="item.image"/>
+                <span>{{item.name}}</span>
+              </div>
+            </ng-template>
           </ng-select>
         </div>
       </li>

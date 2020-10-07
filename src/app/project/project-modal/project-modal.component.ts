@@ -1,23 +1,33 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ModalRef } from 'src/app/shared/modal/modal-ref';
-import { MODAL_DATA } from 'src/app/shared/modal/modal.injection-tokens';
-import { Project } from 'src/app/shared/project.model';
-import { user1, user2, user3 } from 'src/app/shared/task.service';
-import { User } from 'src/app/shared/user.model';
+import { Subject, Subscription } from 'rxjs';
+import { filter, map, tap } from 'rxjs/operators';
+import { userList } from '../../data/data-mock';
+import { ModalRef } from '../../shared/modal/modal-ref';
+import { MODAL_DATA } from '../../shared/modal/modal.injection-tokens';
+import { Project } from '../../shared/project/project.model';
+import { User } from '../../shared/user/user.model';
 
 @Component({
   templateUrl: './project-modal.component.html',
   styleUrls: ['./project-modal.component.scss']
 })
-export class ProjectModalComponent implements OnInit {
-  public userList: User[] = [
-    user1,
-    user2,
-    user3
-  ];
-
+export class ProjectModalComponent implements OnInit, OnDestroy {
   public form: FormGroup;
+  public userList: User[] = userList;
+  public saveProject = new Subject<FormGroup>();
+  private saveProjectSubscription = new Subscription();
+  private saveProject$ = this.saveProject.asObservable().pipe(
+    filter(form => form.valid),
+    map(form => form.value),
+    tap((project) => {
+      if (this.modalData?.id) {
+        project.id = this.modalData.id;
+      }
+
+      this.modalref.close(project);
+    })
+  );
 
   constructor(
     private modalref: ModalRef<ProjectModalComponent>,
@@ -30,19 +40,12 @@ export class ProjectModalComponent implements OnInit {
       description: new FormControl(this.modalData?.description, Validators.required),
       members: new FormControl(this.modalData?.members)
     });
+
+    this.saveProjectSubscription = this.saveProject$.subscribe();
   }
 
-  saveProject(): void {
-    if (this.form.invalid) {
-      return;
-    }
-
-    const project = this.form.value;
-    if (this.modalData?.id) {
-      project.id = this.modalData.id;
-    }
-
-    this.modalref.close(project);
+  ngOnDestroy(): void {
+    this.saveProjectSubscription.unsubscribe();
   }
 
   dismiss(): void {

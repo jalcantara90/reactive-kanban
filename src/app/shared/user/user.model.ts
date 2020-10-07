@@ -1,4 +1,4 @@
-import { Entity } from './entity.model';
+import { Entity } from '../entity.model';
 import { IUser } from './user.interface';
 
 export class User extends Entity implements IUser {

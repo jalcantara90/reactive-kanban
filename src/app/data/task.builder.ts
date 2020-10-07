@@ -1,6 +1,6 @@
-import { Task } from '../shared/task.model';
-import { User } from '../shared/user.model';
-import { ITaskState, TaskStateToDo } from '../shared/task-states.model';
+import { Task } from '../shared/task/task.model';
+import { User } from '../shared/user/user.model';
+import { ITaskState, TaskStateToDo } from '../shared/task/task-states.model';
 
 let taskBuilderIdentifier = 0;
 

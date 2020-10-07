@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { filter } from 'rxjs/operators';
-import { ModalService } from 'src/app/shared/modal/modal.service';
-import { IProject } from 'src/app/shared/project.interface';
-import { Project } from 'src/app/shared/project.model';
+import { ModalService } from '../../shared/modal/modal.service';
+import { IProject } from '../../shared/project/project.interface';
+import { Project } from '../../shared/project/project.model';
 import { projectList } from '../../data/data-mock';
 import { fadeGrowStagger } from '../../shared/animations/fade-grow-stager.animation';
-import { ProjectService } from '../../shared/project.service';
+import { ProjectService } from '../../shared/project/project.service';
 
 @Component({
   selector: 'app-project-shell',

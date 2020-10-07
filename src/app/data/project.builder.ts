@@ -1,6 +1,6 @@
-import { Project } from '../shared/project.model';
-import { Task } from '../shared/task.model';
-import { User } from '../shared/user.model';
+import { Project } from '../shared/project/project.model';
+import { Task } from '../shared/task/task.model';
+import { User } from '../shared/user/user.model';
 
 export class ProjectBuilder {
   private project: Project;
