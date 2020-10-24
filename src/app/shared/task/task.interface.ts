@@ -5,6 +5,6 @@ import { User } from '../user/user.model';
 export interface ITask {
   id?: number;
   title: string;
-  assigned?: User;
-  state: ITaskState;
+  assignedto?: User;
+  state: TaskState;
 }

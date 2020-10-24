@@ -1,6 +1,6 @@
 <section
   [@toogleContentWidth]="contentState"
   [ngClass]="{ 'sidebar-close': !(isOpen$ | async) }"
-  class="bg-white py-5 px-5 content duration-300">
+  class="py-5 px-5 content duration-300">
   <ng-content></ng-content>
 </section>

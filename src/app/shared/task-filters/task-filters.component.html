@@ -1,7 +1,7 @@
 <form
   [formGroup]="filtersForm"
   class="bg-gray-300 flex flex-wrap gap-1 items-center mb-4 p-2 rounded">
-  <div class="inline-block relative search-box">
+  <div class="inline-block relative search-box intro-x">
     <input formControlName="search" class="block bg-gray-300 appearance-none w-full py-2 px-3 pl-8 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" placeholder="Search by username, issue title or number">
     <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center px-2 text-gray-700">
       <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -11,7 +11,7 @@
   </div>
 
   <ng-select
-    class="custom"
+    class="custom intro-x"
     [items]="statesList"
     bindLabel="label"
     placeholder="States"
@@ -20,12 +20,12 @@
   </ng-select>
 
   <ng-select
-    class="custom"
+    class="custom intro-x"
     [items]="userList"
     bindLabel="name"
     placeholder="Assigned To"
     multiple="true"
-    formControlName="assigned">
+    formControlName="assignedto">
     <ng-template ng-label-tmp let-item="item">
       <div class="flex items-center gap-2 bg-white text-black px-2 rounded-full">
         <img class="w-4 h-4 rounded-full" [src]="item.image"/>

@@ -4,9 +4,9 @@
     <span class="text-black mr-2">{{ task.id }}</span>
     <p>{{ task.title }}</p>
   </div>
-  <div class="flex items-center" *ngIf="task.assigned">
-    <img class="w-8 h-8 rounded-full mr-4" [src]="task.assigned.image" >
-    <p class="text-gray-600 truncate leading-none">{{task.assigned.name}}</p>
+  <div class="flex items-center" *ngIf="task.assignedto">
+    <img class="w-8 h-8 rounded-full mr-4" [src]="task.assignedto.image" >
+    <p class="text-gray-600 truncate leading-none">{{task.assignedto.name}}</p>
   </div>
   <div class="flex items-center">
     <span class="text-gray-600 mr-2">State:</span>

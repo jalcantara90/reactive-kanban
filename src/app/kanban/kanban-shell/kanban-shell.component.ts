@@ -21,6 +21,10 @@ export class KanbanShellComponent implements OnInit {
     this.control.valueChanges.subscribe(value => console.log('Custom Form value -->', value));
   }
 
+  getIssuesByProject(projectId: number): void {
+    this.taskService.getTaskListByProjectId(projectId);
+  }
+
   filtersChanges(data): void {
     this.taskService.filter(data);
   }

@@ -15,7 +15,7 @@ export class TaskFiltersComponent {
   filtersForm = new FormGroup({
     search: new FormControl(''),
     states: new FormControl([]),
-    assigned: new FormControl([])
+    assignedto: new FormControl([])
   });
 
   @Output() filtersChanges = this.filtersForm.valueChanges.pipe(

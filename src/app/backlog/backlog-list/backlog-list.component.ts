@@ -14,7 +14,11 @@ export class BacklogListComponent {
   @Output() issueDroped = new EventEmitter<CdkDragDrop<string[]>>();
   constructor() { }
 
-  drop(event: CdkDragDrop<string[]>) {
+  drop(event: CdkDragDrop<string[]>): void {
     this.issueDroped.emit(event);
+  }
+
+  trackByIssueId(issue: Task): number {
+    return issue.id;
   }
 }

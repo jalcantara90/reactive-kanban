@@ -1,5 +1,5 @@
-<section class="container-view">
-  <app-project-selector>
+<section class="intro-y">
+  <app-project-selector (select)="getIssuesByProject($event)">
 
     <div class="flex items-center gap-3">
       <app-icon-checkbox class="text-pink-600" [formControl]="control">
@@ -17,6 +17,13 @@
   <div *ngIf="showFilters$ | async" @inOutAnimation>
     <app-task-filters (filtersChanges)="filtersChanges($event)"></app-task-filters>
   </div>
-  <app-backlog-list [taskList]="taskList$ | async" (issueDroped)="issueDropped($event)"></app-backlog-list>
-  <app-paginator></app-paginator>
+  <ng-container *ngIf="taskListLoaded$; else projectWithoutIssues">
+    <app-backlog-list [taskList]="taskList$ | async" (issueDroped)="issueDropped($event)"></app-backlog-list>
+    <app-paginator [total]="totalIssue$ | async" (pagination)="pagination($event)"></app-paginator>
+  </ng-container>
 </section>
+
+
+<ng-template #projectWithoutIssues>
+  <p>This project has not issues, click on create issue button to create one.</p>
+</ng-template>

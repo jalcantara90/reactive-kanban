@@ -28,7 +28,7 @@ export class IssueCardComponent implements OnInit {
       'bg-pink-500': this.task.state.type === TaskState.CLOSED,
     };
 
-    this.control = new FormControl(this.task.assigned);
+    this.control = new FormControl(this.task.assignedto);
   }
 
 }

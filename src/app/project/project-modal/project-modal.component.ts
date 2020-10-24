@@ -1,20 +1,21 @@
+
 import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Subject, Subscription } from 'rxjs';
+import { Subject, Subscription, Observable } from 'rxjs';
 import { filter, map, tap } from 'rxjs/operators';
-import { userList } from '../../data/data-mock';
 import { ModalRef } from '../../shared/modal/modal-ref';
 import { MODAL_DATA } from '../../shared/modal/modal.injection-tokens';
 import { Project } from '../../shared/project/project.model';
 import { User } from '../../shared/user/user.model';
+import { UserService } from './../../shared/user/user.service';
 
 @Component({
   templateUrl: './project-modal.component.html',
-  styleUrls: ['./project-modal.component.scss']
+  styleUrls: ['./project-modal.component.scss'],
 })
 export class ProjectModalComponent implements OnInit, OnDestroy {
   public form: FormGroup;
-  public userList: User[] = userList;
+  public userList$: Observable<User[]> = this.userService.getUsers();
   public saveProject = new Subject<FormGroup>();
   private saveProjectSubscription = new Subscription();
   private saveProject$ = this.saveProject.asObservable().pipe(
@@ -31,7 +32,8 @@ export class ProjectModalComponent implements OnInit, OnDestroy {
 
   constructor(
     private modalref: ModalRef<ProjectModalComponent>,
-    @Inject(MODAL_DATA) public modalData: Project
+    @Inject(MODAL_DATA) public modalData: Project,
+    private userService: UserService
   ) { }
 
   ngOnInit(): void {

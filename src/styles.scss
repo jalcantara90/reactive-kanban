@@ -7,6 +7,12 @@
 @import "@ng-select/ng-select/themes/default.theme.css";
 @import '@angular/cdk/overlay-prebuilt.css';
 
+$sm: 639px;
+$md: 767px;
+$lg: 1023px;
+$xl: 1279px;
+$xxl: 1720px;
+
 .container-view {
   height: calc(100vh - 46px);
 }
@@ -20,4 +26,72 @@
 .cdk-drop-list-dragging .cdk-drag {
   @apply duration-300;
   @apply transition-transform;
+}
+
+
+* {
+  @for $i from 1 through 50 {
+      > .intro-x:nth-child(#{$i}):not(.cdk-drag-preview) {
+          z-index: #{50 - $i};
+          @apply opacity-0;
+
+          transform: translateX(50px);
+          animation: 0.4s intro-x-animation ease-in-out .33333s;
+          animation-fill-mode: forwards;
+          animation-delay: #{$i * 0.1}s;
+      }
+      > .-intro-x:nth-child(#{$i}):not(.cdk-drag-preview) {
+          z-index: #{50 - $i};
+          @apply opacity-0;
+
+          transform: translateX(-50px);
+          animation: 0.4s intro-x-animation ease-in-out .33333s;
+          animation-fill-mode: forwards;
+          animation-delay: #{$i * 0.1}s;
+      }
+      > .intro-y:nth-child(#{$i}):not(.cdk-drag-preview) {
+          z-index: #{50 - $i};
+          @apply opacity-0;
+
+          transform: translateY(50px);
+          animation: 0.4s intro-y-animation ease-in-out .33333s;
+          animation-fill-mode: forwards;
+          animation-delay: #{$i * 0.1}s;
+      }
+      > .-intro-y:nth-child(#{$i}):not(.cdk-drag-preview) {
+          z-index: #{50 - $i};
+          @apply opacity-0;
+
+          transform: translateY(-50px);
+          animation: 0.4s intro-y-animation ease-in-out .33333s;
+          animation-fill-mode: forwards;
+          animation-delay: #{$i * 0.1}s;
+      }
+  }
+}
+
+@keyframes intro-x-animation {
+  100% {
+    @apply opacity-100;
+    transform: translateX(0px);
+  }
+}
+@keyframes intro-y-animation {
+  100% {
+    @apply opacity-100;
+    transform: translateY(0px);
+  }
+}
+
+
+.zoom-in {
+  @apply transition;
+  @apply duration-300;
+  @apply ease-in-out;
+  @apply transform;
+  @apply cursor-pointer;
+  &:hover {
+    @apply scale-105;
+    @apply shadow-xl;
+  }
 }

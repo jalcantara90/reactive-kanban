@@ -1,7 +1,7 @@
 
 <div class="gap-2 overflow-auto kanban-container" [ngClass]="{ 'filters-shown': isFiltersShown }">
   <section class="h-full  w-full" *ngFor="let column of columns; let i = index">
-    <div class="border-b-2 border-black bg-white mb-2 sticky text-gray-700 top-0 z-10">{{ column.name }}</div>
+    <div class="border-b-2 border-black kanban-column-bg mb-2 sticky text-gray-700 top-0 z-10">{{ column.name }}</div>
     <div
       [id]="column.name"
       cdkDropList

@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { filter } from 'rxjs/operators';
 import { ModalService } from '../../shared/modal/modal.service';
 import { IProject } from '../../shared/project/project.interface';
-import { Project } from '../../shared/project/project.model';
-import { projectList } from '../../data/data-mock';
 import { fadeGrowStagger } from '../../shared/animations/fade-grow-stager.animation';
 import { ProjectService } from '../../shared/project/project.service';
 
@@ -25,7 +23,7 @@ export class ProjectShellComponent implements OnInit {
     this.projectService.getProjectList();
   }
 
-  async openModal(project?: Project): Promise<void> {
+  async openModal(project?: IProject): Promise<void> {
     const { ProjectModalComponent } = await import('../project-modal/project-modal.component');
 
     const modalRef = this.modalService.present(ProjectModalComponent, { data: project, width: '40vw' });
@@ -34,9 +32,9 @@ export class ProjectShellComponent implements OnInit {
     ).subscribe(res => this.createOrUpdateProject(res.data));
   }
 
-  createOrUpdateProject(project: Partial<Project>): void {
+  private createOrUpdateProject(project: IProject): void {
     if (project.id) {
-      return this.projectService.editProject(project as Project);
+      return this.projectService.editProject(project as IProject);
     }
 
     return this.projectService.createProject(project);
@@ -44,5 +42,9 @@ export class ProjectShellComponent implements OnInit {
 
   deleteProject(projectId: number): void {
     this.projectService.deleteProject(projectId);
+  }
+
+  trackByProjectId(project: IProject): number {
+    return project.id;
   }
 }

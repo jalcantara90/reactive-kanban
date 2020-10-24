@@ -1,48 +1,8 @@
-.backlog-list-container {
-  max-height: 70%;
+button {
+  @apply duration-200;
 
-  svg {
-    @apply text-transparent;
-  }
-
-  button {
-    @apply duration-200;
-
-    &:hover {
-      transform: scale(1.5);
-    }
-  }
-
-  thead {
-    tr {
-      @apply bg-red-400;
-    }
-  }
-
-  th {
-    @apply text-left;
-    @apply sticky;
-    @apply top-0;
-    @apply bg-white;
-    @apply rounded;
-  }
-
-  tr:hover {
-    svg {
-      @apply text-purple-500;
-    }
-  }
-
-  tbody {
-
-    tr:hover {
-      @apply bg-gray-200;
-      @apply duration-300;
-    }
-
-    td {
-      @apply py-2;
-    }
+  &:hover {
+    transform: scale(1.5);
   }
 }
 
@@ -51,12 +11,72 @@
   @apply justify-start;
   @apply shadow;
   @apply gap-4;
-  @apply py-2;
+  @apply p-2;
   @apply rounded;
-  @apply bg-gray-100;
+  @apply bg-white;
   @apply items-center;
 
   svg {
     @apply text-purple-500;
+  }
+}
+
+.table {
+  @apply w-full;
+  @apply text-left;
+  @apply relative;
+
+  th {
+    @apply font-medium;
+    @apply px-5;
+    @apply py-3;
+  }
+  td {
+    @apply px-5;
+    @apply py-3;
+  }
+  &.table--sm {
+    th {
+      @apply px-4;
+      @apply py-2;
+    }
+    td {
+      @apply px-4;
+      @apply py-2;
+    }
+  }
+}
+
+.table-report {
+  &:not(.table-report--bordered) {
+    border-spacing: 0 10px;
+    @apply border-separate;
+    td {
+      @apply bg-white;
+      box-shadow: 20px 3px 20px #0000000b;
+      &:first-child {
+          @apply rounded-l-md;
+      }
+      &:last-child {
+          @apply rounded-r-md;
+      }
+      &.table-report__action {
+        @apply py-0;
+        @apply relative;
+        &:before {
+          content: "";
+          @apply w-px;
+          @apply h-8;
+          @apply bg-gray-200;
+          @apply absolute;
+          @apply left-0;
+          @apply inset-y-0;
+          @apply my-auto;
+        }
+      }
+    }
+  }
+  img {
+    box-shadow: 0px 0px 0px 2px #fff, 1px 1px 5px rgba(0, 0, 0, 0.32);
   }
 }

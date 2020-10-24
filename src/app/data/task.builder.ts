@@ -1,6 +1,7 @@
 import { Task } from '../shared/task/task.model';
 import { User } from '../shared/user/user.model';
 import { ITaskState, TaskStateToDo } from '../shared/task/task-states.model';
+import { TaskState } from '../shared/task/task-state.enum';
 
 let taskBuilderIdentifier = 0;
 
@@ -8,7 +9,7 @@ export class TaskBuilder {
   private task: Task;
 
   constructor() {
-    this.task = new Task({ title: `Task - ${taskBuilderIdentifier++}`, state: new TaskStateToDo() });
+    this.task = new Task({ title: `Task - ${taskBuilderIdentifier++}`, state: TaskState.TODO });
   }
 
   public build(): Task {
@@ -26,7 +27,7 @@ export class TaskBuilder {
   }
 
   public withAssignedUser(user: User): TaskBuilder {
-    this.task.assigned = user;
+    this.task.assignedto = user;
     return this;
   }
 }

@@ -1,4 +1,4 @@
-<div class="h-screen">
+<div class="h-screen intro-y">
   <div class="flex justify-between w-full px-2 mb-6 items-center">
     <span class="text-xl font-medium">Projects</span>
     <button
@@ -8,12 +8,13 @@
     </button>
   </div>
   <ng-container *ngIf="projectList$ | async as projectList; else loading">
-    <div class="project-grid" @fadeGrowStagger>
+    <div class="project-grid">
       <app-project-card
+        class="intro-x"
         [project]="project"
         (editProject)="openModal($event)"
         (deleteProject)="deleteProject($event)"
-        *ngFor="let project of projectList">
+        *ngFor="let project of projectList; trackBy: trackByProjectId">
       </app-project-card>
     </div>
   </ng-container>

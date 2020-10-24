@@ -8,6 +8,6 @@ export const fallOutAnimation: AnimationTriggerMetadata =
         stagger('100ms', [
           animate('400ms', style({ opacity: 1, transform: 'scale(1) translateY(0)' }))
         ])
-      ])
+      ], { optional: true })
     ])
   ]);

@@ -1,0 +1,14 @@
+.arrow-btn {
+  @apply p-2;
+  @apply rounded-full;
+  @apply duration-300;
+  @apply text-gray-800;
+
+  &:hover:not([disabled]) {
+    @apply bg-gray-200;
+  }
+
+  &[disabled] {
+    @apply text-gray-300;
+  }
+}

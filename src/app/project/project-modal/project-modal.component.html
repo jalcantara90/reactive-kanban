@@ -1,6 +1,6 @@
-<form class="w-full" [formGroup]="form" (ngSubmit)="saveProject.next(form)">
+<form class="w-full intro-y" [formGroup]="form" (ngSubmit)="saveProject.next(form)">
 
-  <div class="flex flex-wrap -mx-3 mb-6">
+  <div class="flex flex-wrap -mx-3 mb-6 intro-y">
     <div class="w-full px-3">
       <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
         Project Name
@@ -8,7 +8,7 @@
       <input focus formControlName="name" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="text" placeholder="Type project name">
     </div>
   </div>
-  <div class="flex flex-wrap -mx-3 mb-6">
+  <div class="flex flex-wrap -mx-3 mb-6 intro-y">
     <div class="w-full px-3">
       <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
         Description
@@ -18,18 +18,18 @@
         formControlName="description"
         cols="30"
         rows="6"
-        class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+        class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 intro-y">
       </textarea>
     </div>
   </div>
   <div class="flex flex-wrap -mx-3 mb-6">
     <div class="w-full px-3">
-      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
+      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 intro-y" for="grid-password">
         Project Name
       </label>
       <ng-select
-        class="w-full"
-        [items]="userList"
+        class="w-full intro-y"
+        [items]="userList$ | async"
         placeholder="Select project members"
         multiple="true"
         formControlName="members">
@@ -48,7 +48,7 @@
       </ng-select>
     </div>
   </div>
-  <div class="flex flex-wrap -mx-3 mb-2">
+  <div class="flex flex-wrap -mx-3 mb-2 -intro-x">
     <div class="flex justify-end mt-4 w-full -mx-3 gap-3">
       <button class="px-3 py-1 bg-white border-2 border-pink-600 rounded-full text-pink-600 hover:border-pink-400 hover:text-white hover:bg-pink-400 duration-300" (click)="dismiss(); $event.preventDefault();">Cancel</button>
       <button type="submit" class="px-3 py-1 bg-pink-600 rounded-full text-white hover:bg-pink-400 duration-300" [disabled]="form.invalid">
