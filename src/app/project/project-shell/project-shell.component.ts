@@ -1,15 +1,16 @@
+
 import { Component, OnInit } from '@angular/core';
 import { filter } from 'rxjs/operators';
 import { ModalService } from '../../shared/modal/modal.service';
 import { IProject } from '../../shared/project/project.interface';
-import { fadeGrowStagger } from '../../shared/animations/fade-grow-stager.animation';
 import { ProjectService } from '../../shared/project/project.service';
+import { introStaggedX, introX, introInversedY } from '../../shared/animations/intro.animations';
 
 @Component({
   selector: 'app-project-shell',
   templateUrl: './project-shell.component.html',
   styleUrls: ['./project-shell.component.scss'],
-  animations: [fadeGrowStagger]
+  animations: [introStaggedX, introX, introInversedY]
 })
 export class ProjectShellComponent implements OnInit {
   projectList$ = this.projectService.state$;

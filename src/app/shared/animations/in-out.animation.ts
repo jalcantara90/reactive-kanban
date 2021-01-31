@@ -5,7 +5,7 @@ export const inOutAnimation: AnimationTriggerMetadata =
     state('void', style({height: 0, opacity: 0 })),
     transition(':enter', [
       style({ height: 0, opacity: 0 }),
-      animate('.3s ease-out', style({ height: 52, opacity: 1}))
+      animate('.3s ease-out', style({ height: '*', opacity: 1}))
     ]),
     transition(':leave', [
       style({ height: 52, opacity: 1 }),

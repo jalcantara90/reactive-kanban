@@ -1,4 +1,4 @@
-<section class="intro-y">
+<section>
   <app-project-selector (select)="getIssuesByProject($event)">
 
     <div class="flex items-center gap-3">
@@ -22,7 +22,6 @@
     <app-paginator [total]="totalIssue$ | async" (pagination)="pagination($event)"></app-paginator>
   </ng-container>
 </section>
-
 
 <ng-template #projectWithoutIssues>
   <p>This project has not issues, click on create issue button to create one.</p>

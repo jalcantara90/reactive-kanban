@@ -4,6 +4,7 @@ import { Task } from '../../shared/task/task.model';
 import { fallOutAnimation } from '../../shared/animations/fall-out.animation';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { TaskState } from '../../shared/task/task-state.enum';
+import { introY } from '../../shared/animations/intro.animations';
 
 interface IKanbanColumn {
   name: string;
@@ -48,7 +49,7 @@ const columnsConfig: IKanbanColumnConfig[] = [
   selector: 'app-kanban-column-list',
   templateUrl: './kanban-column-list.component.html',
   styleUrls: ['./kanban-column-list.component.scss'],
-  animations: [fallOutAnimation]
+  animations: [fallOutAnimation, introY]
 })
 export class KanbanColumnListComponent implements OnInit {
   public columns: IKanbanColumn[];
@@ -59,7 +60,7 @@ export class KanbanColumnListComponent implements OnInit {
       return {
         name: columnConfig.name,
         columnState: columnConfig.columnState,
-        taskList: taskList.filter(task => task.state.type === columnConfig.columnState)
+        taskList: taskList?.filter(task => task.state.type === columnConfig.columnState)
       };
     });
     this.connectedTo = this.columns.map(column => column.name);
@@ -69,7 +70,7 @@ export class KanbanColumnListComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  drop(event: CdkDragDrop<Task[]>) {
+  drop(event: CdkDragDrop<Task[]>): void {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {

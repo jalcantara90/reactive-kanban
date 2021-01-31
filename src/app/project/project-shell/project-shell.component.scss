@@ -1,7 +1,6 @@
 .project-grid {
   @apply grid;
   @apply gap-3;
-  @apply overflow-auto;
   @apply p-2;
 
   max-height: 80vh;

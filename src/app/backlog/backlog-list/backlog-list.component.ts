@@ -1,13 +1,13 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { fadeInGrow } from '../../shared/animations/fadein-grow.animation';
 import { CdkDragDrop} from '@angular/cdk/drag-drop';
 import { Task } from '../../shared/task/task.model';
+import { introStaggedX } from '../../shared/animations/intro.animations';
 
 @Component({
   selector: 'app-backlog-list',
   templateUrl: './backlog-list.component.html',
   styleUrls: ['./backlog-list.component.scss'],
-  animations: [fadeInGrow]
+  animations: [introStaggedX]
 })
 export class BacklogListComponent {
   @Input() taskList: Task[];

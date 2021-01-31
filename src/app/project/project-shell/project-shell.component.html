@@ -1,4 +1,4 @@
-<div class="h-screen intro-y">
+<div @introInversedY class="h-screen">
   <div class="flex justify-between w-full px-2 mb-6 items-center">
     <span class="text-xl font-medium">Projects</span>
     <button
@@ -8,9 +8,9 @@
     </button>
   </div>
   <ng-container *ngIf="projectList$ | async as projectList; else loading">
-    <div class="project-grid">
+    <div class="project-grid" @introStaggedX>
       <app-project-card
-        class="intro-x"
+        @introX
         [project]="project"
         (editProject)="openModal($event)"
         (deleteProject)="deleteProject($event)"

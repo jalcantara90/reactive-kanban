@@ -1,5 +1,5 @@
 import { BasePortalOutlet, CdkPortalOutlet, ComponentPortal, TemplatePortal } from '@angular/cdk/portal';
-import { Component, ComponentRef, EmbeddedViewRef, EventEmitter, ViewChild } from '@angular/core';
+import { Component, ComponentRef, EmbeddedViewRef, EventEmitter, ViewChild, HostListener, HostBinding } from '@angular/core';
 import { AnimationEvent } from '@angular/animations';
 import { modalAnimations } from './modal.animations';
 import { ModalAnimationEvent, ModalAnimationState } from './modal-config';
@@ -7,20 +7,18 @@ import { ModalAnimationEvent, ModalAnimationState } from './modal-config';
 @Component({
   selector: 'app-modal',
   templateUrl: './modal.component.html',
-  animations: [modalAnimations],
-  host: {
-    '[@modalAnimations]': 'state',
-    '(@modalAnimations.start)': 'onAnimationStart($event)',
-    '(@modalAnimations.done)': 'onAnimationDone($event)',
-    'class': 'modal-container'
-  },
-  styles: [':host { width: 100%; }']
+  animations: [modalAnimations]
 })
 export class ModalComponent extends BasePortalOutlet {
   @ViewChild(CdkPortalOutlet, { static: true }) portalOutlet: CdkPortalOutlet;
   public modalId: string;
   public state: ModalAnimationState = 'enter';
   public animationStateChanged = new EventEmitter<ModalAnimationEvent>();
+  @HostBinding('style.width') hostWidth = '100%';
+  @HostBinding('class.modal-container') modalContainer = true;
+  @HostBinding('@modalAnimations')  get animationState(): string {
+    return this.state;
+  }
 
   constructor() {
     super();
@@ -34,7 +32,8 @@ export class ModalComponent extends BasePortalOutlet {
     throw new Error('Method not implemented.');
   }
 
-  onAnimationDone({toState, totalTime}: AnimationEvent) {
+  @HostListener('@modalAnimations.start', ['$event'])
+  onAnimationDone({toState, totalTime}: AnimationEvent): void {
     if (toState === 'enter') {
       this.animationStateChanged.next({state: 'opened', totalTime});
     } else if (toState === 'exit') {
@@ -42,7 +41,8 @@ export class ModalComponent extends BasePortalOutlet {
     }
   }
 
-  onAnimationStart({toState, totalTime}: AnimationEvent) {
+  @HostListener('@modalAnimations.done', ['$event'])
+  onAnimationStart({toState, totalTime}: AnimationEvent): void {
     if (toState === 'enter') {
       this.animationStateChanged.next({state: 'opening', totalTime});
     } else if (toState === 'exit' || toState === 'void') {

@@ -1,8 +1,8 @@
 import { map } from 'rxjs/operators';
 import { CdkDragDrop } from '@angular/cdk/drag-drop';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { inOutAnimation } from '../../shared/animations/in-out.animation';
 import { ITaskFilters, TaskService } from '../../shared/task/task.service';
 
@@ -12,16 +12,22 @@ import { ITaskFilters, TaskService } from '../../shared/task/task.service';
   styleUrls: ['./backlog-shell.component.scss'],
   animations: [inOutAnimation]
 })
-export class BacklogShellComponent implements OnInit {
+export class BacklogShellComponent implements OnInit, OnDestroy {
   public control = new FormControl(false);
   public showFilters$: Observable<boolean> = this.control.valueChanges;
   public taskList$ = this.taskService.taskList$;
   public taskListLoaded$ = this.taskService.taskList$.pipe(map(taskList => !!taskList.length));
   public totalIssue$ = this.taskService.totalIssues$;
+  private subscription: Subscription = new Subscription();
 
   constructor(private taskService: TaskService) { }
 
   ngOnInit(): void {
+    this.subscription = this.taskService.reorder$.subscribe();
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 
   filtersChanges(filters: ITaskFilters): void {

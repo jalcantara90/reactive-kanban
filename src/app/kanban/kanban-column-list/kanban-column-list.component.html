@@ -3,9 +3,9 @@
   <section class="h-full  w-full" *ngFor="let column of columns; let i = index">
     <div class="border-b-2 border-black kanban-column-bg mb-2 sticky text-gray-700 top-0 z-10">{{ column.name }}</div>
     <div
-      [id]="column.name"
+      @introY
       cdkDropList
-      @fallOutAnimation
+      [id]="column.name"
       [cdkDropListData]="columns[i].taskList"
       [cdkDropListConnectedTo]="connectedTo"
       (cdkDropListDropped)="drop($event)"

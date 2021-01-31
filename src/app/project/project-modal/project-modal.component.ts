@@ -1,4 +1,3 @@
-
 import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subject, Subscription, Observable } from 'rxjs';
@@ -11,7 +10,7 @@ import { UserService } from './../../shared/user/user.service';
 
 @Component({
   templateUrl: './project-modal.component.html',
-  styleUrls: ['./project-modal.component.scss'],
+  styleUrls: ['./project-modal.component.scss']
 })
 export class ProjectModalComponent implements OnInit, OnDestroy {
   public form: FormGroup;
