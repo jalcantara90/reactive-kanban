@@ -1,7 +1,7 @@
 import { ModalComponent } from './modal.component';
 import { OverlayRef } from '@angular/cdk/overlay';
 import { Observable, Subject } from 'rxjs';
-import { filter, first } from 'rxjs/operators';
+import { filter, first, tap } from 'rxjs/operators';
 import { ModalConfig } from './modal-config';
 
 let incrementalId = 0;
@@ -55,7 +55,8 @@ export class ModalRef<T, R = any> {
     ).subscribe(() => this.dismiss());
 
     this.containerInstance.animationStateChanged.pipe(
-      filter(event => event.state === 'closed'),
+      filter(({state}) => state === 'closed'),
+      tap(console.log),
       first()
     ).subscribe(() => this._close());
   }
@@ -64,17 +65,17 @@ export class ModalRef<T, R = any> {
     return this.overlayRef.backdropClick();
   }
 
-  close(data?: any) {
+  close(data?: any): void {
     this.result = new CloseEvent(data);
     this.containerInstance.exitAnimationStart();
   }
 
-  dismiss() {
+  dismiss(): void {
     this.result = new DismissEvent();
     this.containerInstance.exitAnimationStart();
   }
 
-  private _close() {
+  private _close(): void {
     this.overlayRef.dispose();
     this.afterClosed.next(this.result);
     this.afterClosed.complete();

@@ -7,7 +7,11 @@ import { ModalAnimationEvent, ModalAnimationState } from './modal-config';
 @Component({
   selector: 'app-modal',
   templateUrl: './modal.component.html',
-  animations: [modalAnimations]
+  animations: [modalAnimations],
+  host: {
+    '(@modalAnimations.start)': 'onAnimationStart($event)',
+    '(@modalAnimations.done)': 'onAnimationDone($event)'
+  }
 })
 export class ModalComponent extends BasePortalOutlet {
   @ViewChild(CdkPortalOutlet, { static: true }) portalOutlet: CdkPortalOutlet;
@@ -32,7 +36,6 @@ export class ModalComponent extends BasePortalOutlet {
     throw new Error('Method not implemented.');
   }
 
-  @HostListener('@modalAnimations.start', ['$event'])
   onAnimationDone({toState, totalTime}: AnimationEvent): void {
     if (toState === 'enter') {
       this.animationStateChanged.next({state: 'opened', totalTime});
@@ -41,7 +44,6 @@ export class ModalComponent extends BasePortalOutlet {
     }
   }
 
-  @HostListener('@modalAnimations.done', ['$event'])
   onAnimationStart({toState, totalTime}: AnimationEvent): void {
     if (toState === 'enter') {
       this.animationStateChanged.next({state: 'opening', totalTime});

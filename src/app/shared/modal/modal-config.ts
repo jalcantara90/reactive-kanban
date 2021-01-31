@@ -1,4 +1,3 @@
-
 import {ViewContainerRef, ComponentFactoryResolver} from '@angular/core';
 import {Direction} from '@angular/cdk/bidi';
 import {ScrollStrategy} from '@angular/cdk/overlay';
@@ -23,24 +22,24 @@ export class ModalConfig<D = any> {
   viewContainerRef?: ViewContainerRef;
   role?: ModalRole = 'dialog';
   panelClass?: string | string[] = '';
-  hasBackdrop? = true;
-  backdropClass? = '';
-  disableClose? = false;
-  width? = '100%';
-  height? = '';
+  hasBackdrop ? = true;
+  backdropClass ? = '';
+  disableClose ? = false;
+  width ? = '';
+  height ? = '';
   minWidth?: number | string = '';
   minHeight?: number | string;
-  maxWidth?: number | string = '';
-  maxHeight?: number | string;
+  maxWidth?: number | string = '100%';
+  maxHeight?: number | string = '100%';
   position?: ModalPosition;
   data?: D | null = null;
   direction?: Direction;
   ariaDescribedBy?: string | null = null;
   ariaLabelledBy?: string | null = null;
   ariaLabel?: string | null = null;
-  autoFocus? = true;
-  restoreFocus? = true;
+  autoFocus ? = true;
+  restoreFocusn ? = true;
   scrollStrategy?: ScrollStrategy;
-  closeOnNavigation? = true;
+  closeOnNavigation ? = true;
   componentFactoryResolver?: ComponentFactoryResolver;
 }

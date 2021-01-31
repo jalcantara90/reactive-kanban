@@ -31,7 +31,7 @@ export class TaskService {
     filter(project => !!project)
   );
 
-  filters$ = this.filterTask.asObservable().pipe(
+  private filters$ = this.filterTask.asObservable().pipe(
     debounceTime(300),
     distinctUntilChanged()
   );

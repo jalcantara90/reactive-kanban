@@ -1,3 +1,4 @@
+import { ModalService } from './../../shared/modal/modal.service';
 import { map } from 'rxjs/operators';
 import { CdkDragDrop } from '@angular/cdk/drag-drop';
 import { Component, OnInit, OnDestroy } from '@angular/core';
@@ -20,7 +21,10 @@ export class BacklogShellComponent implements OnInit, OnDestroy {
   public totalIssue$ = this.taskService.totalIssues$;
   private subscription: Subscription = new Subscription();
 
-  constructor(private taskService: TaskService) { }
+  constructor(
+    private taskService: TaskService,
+    private modalService: ModalService
+  ) { }
 
   ngOnInit(): void {
     this.subscription = this.taskService.reorder$.subscribe();
@@ -44,5 +48,11 @@ export class BacklogShellComponent implements OnInit, OnDestroy {
 
   pagination(pagination): void {
     this.taskService.changePaginationQuery(pagination);
+  }
+
+  async openBacklogModal(): Promise<void> {
+    const { BacklogModalComponent } = await import('../backlog-modal/backlog-modal.component');
+    const modalRef$ = this.modalService.present(BacklogModalComponent);
+    modalRef$.onClose$.subscribe(data => console.log('DATA', data));
   }
 }

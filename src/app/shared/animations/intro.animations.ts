@@ -73,6 +73,16 @@ export const introStaggedX = trigger('introStaggedX', [
 
 export const Container = [
   trigger('container', [
-    transition(':enter, :leave', [query('@*', animateChild({ delay: '.1s' }))]),
+    transition(':enter', [
+      // query('@*', animateChild({ delay: '.1s' })),
+      query('.introRight', [
+        ExitStyle,
+        stagger('.1s', [
+          animate('.4s ease-in-out', EnterStyle)
+        ]),
+      ])
+    ]),
   ]),
 ];
+
+

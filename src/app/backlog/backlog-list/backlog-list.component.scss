@@ -8,13 +8,15 @@ button {
 
 .cdk-drag-preview {
   @apply flex;
-  @apply justify-start;
+  @apply justify-evenly;
   @apply shadow;
   @apply gap-4;
-  @apply p-2;
+  @apply py-3;
+  @apply px-5;
   @apply rounded;
   @apply bg-white;
   @apply items-center;
+  @apply w-full;
 
   svg {
     @apply text-purple-500;

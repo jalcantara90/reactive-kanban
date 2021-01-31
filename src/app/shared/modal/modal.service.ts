@@ -15,7 +15,7 @@ export class ModalService {
     @Optional() @Inject(MODAL_DEFAULT_OPTIONS) private defaultOptions: any
   ) { }
 
-  present<T>(component: ComponentType<T>, modalConfig: ModalConfig): ModalRef<T> {
+  present<T>(component: ComponentType<T>, modalConfig?: ModalConfig): ModalRef<T> {
     const config = this.applyConfigDefaults(modalConfig, this.defaultOptions || new ModalConfig());
     const overlayConfig = this.createOverlayConfig(config);
     const overlayRef = this.createOverlay(overlayConfig);
@@ -55,7 +55,7 @@ export class ModalService {
     return this.overlay.create(config);
   }
 
-  private attachModalContainerRef(overlayRef: OverlayRef) {
+  private attachModalContainerRef(overlayRef: OverlayRef): ModalComponent {
     const injector = Injector.create({
       parent: this.injector,
       providers: []
